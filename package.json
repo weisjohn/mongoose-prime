@@ -1,0 +1,25 @@
+{
+  "name": "mongoose-prime",
+  "version": "1.0.0",
+  "description": "Prime a mongoose model with default data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/weisjohn/mongoose-prime.git"
+  },
+  "keywords": [
+    "mongoose",
+    "prime",
+    "default",
+    "data",
+    "fixtures"
+  ],
+  "author": "John Weis",
+  "license": "MIT",
+  "dependencies": {
+    "async": "0.2.9"
+  }
+}
