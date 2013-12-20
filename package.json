@@ -17,7 +17,7 @@
     "data",
     "fixtures"
   ],
-  "author": "John Weis",
+  "author": "John Weis <weis.john@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "async": "0.2.9"
