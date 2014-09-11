@@ -4,7 +4,7 @@ var async = require('async')
   ;
 
 module.exports = function(model, data, cb) {
-    var skipped = 0, added = 0, failed = 0;
+    var skipped = 0, added = 0, failed = 0, records = [];
     async.each(data, function(data, cb) {
 
         var copy = {};
@@ -14,16 +14,21 @@ module.exports = function(model, data, cb) {
             copy[key] = data[key];
         });
 
-        model.findOne(copy, function(err, results) {
+        model.findOne(copy, function(err, result) {
             if (err) return cb(err);
-            if (results) { skipped++; return cb(); }
-            (new model(data)).save(function(err, results) {
+            if (result) { skipped++; return cb(); }
+            (new model(data)).save(function(err, result) {
                 if (err) failed++;
-                if (results) added++;
+                if (result) { added++; records.push(result); }
                 cb();
             });
         });
     }, function(err) {
-        cb(err, { skipped: skipped, added: added, failed: failed });
+        cb(err, { 
+            skipped: skipped, 
+            added: added, 
+            failed: failed, 
+            records: records 
+        });
     });
 }

@@ -23,4 +23,4 @@ mp(Templates, data, function(err, results) {
 });
 ```
 
-The callback receives a `results` object of with three numbers: `added`, `failed`, `skipped`.
+The callback receives a `results` object of with three numbers: `added`, `failed`, `skipped` and a `records` array, containing the inserted records.
