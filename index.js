@@ -36,7 +36,7 @@ module.exports = function(model, data, validate, cb) {
         }
 
         model.findOne(query, function(err, result) {
-            if (err) return { res.failed++; cb(err); }
+            if (err) { res.failed++; return cb(err); }
             if (result) { res.skipped++; return cb(); }
             (new model(data)).save(function(err, result) {
                 if (err) res.failed++;
