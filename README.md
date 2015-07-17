@@ -1,6 +1,6 @@
 # mongoose-prime
 
-insert a collection of objects into a mongoose model
+prime a mongoose model with data
 
 ### usage
 
