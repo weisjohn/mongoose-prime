@@ -11,6 +11,9 @@ module.exports = function(model, data, validate, cb) {
         validate = null;
     }
 
+    // optional callback
+    if (typeof cb !== "function") cb = function() {};
+
     // capture the original validation status
     var original = model.schema.options.validateBeforeSave;
 
