@@ -25,7 +25,10 @@ module.exports = function(model, data, validate, cb) {
     async.each(data, function(data, cb) {
         var query = {};
         if (data._id) {
-            query = { _id : data._id };
+            query = { _id : data._id, $or : [
+                { deleted : { $exists : true } },
+                { deleted : { $exists : false } }
+            ] };
         } else {
             // look for the exact same document
             _.chain(data).keys().each(function(key) {
