@@ -10,7 +10,8 @@ var people = [{
         "$oid": "55a8ba272d5d823f8b4bc034"
     },
     "first_name": "Michael",
-    "last_name": "Scott"
+    "last_name": "Scott",
+    "birthday": { "$date" : "2014-09-08T12:19:09.444Z" }
 }, {
     "first_name": "Dwight",
     "last_name": "Schrute"

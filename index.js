@@ -28,7 +28,7 @@ module.exports = function(model, data, validate, cb) {
         if (data._id) {
 
             if (typeof data._id === 'object' && data._id.$oid)
-                data._id = EJSON.deflate(data._id);
+                data = EJSON.deflate(data);
 
             query = { _id : data._id, $or : [
                 { deleted : { $exists : true } },

@@ -5,6 +5,7 @@ module.exports = function(cb) {
     mongoose.model('people', (new mongoose.Schema({
         first_name: String,
         last_name: String,
+        birthday: Date
     })), 'people');
 
     mongoose.model('site', (new mongoose.Schema({
