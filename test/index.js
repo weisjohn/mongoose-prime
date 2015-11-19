@@ -3,7 +3,12 @@ var async = require('async');
 var mongoose = require('mongoose');
 var mp = require('../');
 
+
 var people = [{
+    // EJSON object - https://github.com/weisjohn/mongoose-prime/issues/4
+    "_id": {
+        "$oid": "55a8ba272d5d823f8b4bc034"
+    },
     "first_name": "Michael",
     "last_name": "Scott"
 }, {
@@ -24,7 +29,8 @@ function test(cb) {
                 // api level tests
                 assert(!err, 'err should be null');
                 assert(!!results, 'results should not be null');
-                assert(typeof results === 'object', 'results should be an object');
+                assert(typeof results === 'object',
+                    'results should be an object');
 
                 // return values
                 assert.equal(results.skipped, 0);
