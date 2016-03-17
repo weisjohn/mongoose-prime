@@ -6,6 +6,11 @@ var async = require('async')
 
 module.exports = function(model, data, validate, cb) {
 
+    // check if data is Array, wrap
+    if (!Array.isArray(data)) {
+        data = [data];
+    }
+
     // optional validate
     if (typeof validate === "function") {
         cb = validate;

@@ -24,7 +24,7 @@ mp(users, data, function(err, results) {
 #### `mp(model, data, [validate], [callback])`
 
  - `model` - reference to the mongoose model
- - `data` - an array of objects
+ - `data` - an object or array of objects
  - `validate` - optional boolean to disable schema validation (default: `null`)
  - `callback` - optional `function(err, results) {}`
 

@@ -3,7 +3,7 @@ var async = require('async');
 var mongoose = require('mongoose');
 var mp = require('../');
 
-
+// collection
 var people = [{
     // EJSON object - https://github.com/weisjohn/mongoose-prime/issues/4
     "_id": {
@@ -17,6 +17,12 @@ var people = [{
     "last_name": "Schrute"
 }];
 
+// item
+var person = {
+    "first_name": "Jim",
+    "last_name": "Halpert"
+};
+
 function test(cb) {
 
     // obtain model refs
@@ -24,6 +30,9 @@ function test(cb) {
     assert.equal(People.modelName, 'people');
 
     async.series([
+        function(cb) {
+            People.remove({}, cb);
+        },
         function(cb) {
             mp(People, people, function(err, results) {
 
@@ -38,6 +47,23 @@ function test(cb) {
                 assert.equal(results.added, 2);
                 assert.equal(results.failed, 0);
                 assert.equal(results.records.length, 2);
+
+                cb(null, 'done');
+            });
+        }, function(cb) {
+            mp(People, person, function(err, results) {
+
+                // api level tests
+                assert(!err, 'err should be null');
+                assert(!!results, 'results should not be null');
+                assert(typeof results === 'object',
+                    'results should be an object');
+
+                // return values
+                assert.equal(results.skipped, 0);
+                assert.equal(results.added, 1);
+                assert.equal(results.failed, 0);
+                assert.equal(results.records.length, 1);
 
                 cb(null, 'done');
             });
